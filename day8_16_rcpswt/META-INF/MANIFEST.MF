@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Day8_16_rcpswt
+Bundle-SymbolicName: day8_16_rcpswt; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: day8_16_rcpswt.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ swing2swt.jar
