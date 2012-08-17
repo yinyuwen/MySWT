@@ -80,6 +80,9 @@ public class MyEditor extends EditorPart {
 		TableColumn tableColumn = new TableColumn(table, SWT.CENTER);
 		tcl_composite_1.setColumnData(tableColumn, new ColumnPixelData(235, true, true));
 		tableColumn.setText("\u6700\u5927\u503C");
+		
+		TableItem tableItem = new TableItem(table, SWT.NONE);
+		tableItem.setText(new String[] {"34", "ds"});
 	}
 
 	@Override

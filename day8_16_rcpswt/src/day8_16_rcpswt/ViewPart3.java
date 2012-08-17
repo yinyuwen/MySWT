@@ -1,14 +1,21 @@
 package day8_16_rcpswt;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.OpenInNewWindowAction;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Tree;
+import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.layout.TableColumnLayout;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.FillLayout;
@@ -29,8 +36,31 @@ public class ViewPart3 extends ViewPart {
 		parent.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		Tree tree = new Tree(parent, SWT.BORDER);
-		tree.setForeground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_BLUE));
+		tree.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_BLUE));
+
+		tree.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				try {
+					PlatformUI
+							.getWorkbench()
+							.getActiveWorkbenchWindow()
+							.getActivePage()
+							.openEditor(new MyEditorInput(),
+									"day8_16_rcpswt.editor1", true);
+				} catch (PartInitException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+
 		TreeItem trtmRoot = new TreeItem(tree, SWT.NONE);
 		trtmRoot.setText("Root");
 
@@ -68,13 +98,10 @@ public class ViewPart3 extends ViewPart {
 		trtmSfst.setText("sfst");
 		trtmTest.setExpanded(true);
 
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
 
 	}
 

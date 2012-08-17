@@ -36,10 +36,10 @@ public class ViewPart8 extends ViewPart {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) {
-		ViewPart8 part8 = new ViewPart8();
-
-	}
+	// public static void main(String[] args) {
+	// ViewPart8 part8 = new ViewPart8();
+	//
+	// }
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -57,10 +57,7 @@ public class ViewPart8 extends ViewPart {
 
 		final ChartComposite frame1 = new ChartComposite(parent, SWT.NONE,
 				viewChart, true);
-		FillLayout fillLayout = new FillLayout();
-		fillLayout.type = SWT.VERTICAL;
-		frame1.setLayout(fillLayout);
-		frame1.setSize(600, 300);
+		
 		frame1.setDisplayToolTips(true);
 		frame1.setHorizontalAxisTrace(false);
 		frame1.setVerticalAxisTrace(false);

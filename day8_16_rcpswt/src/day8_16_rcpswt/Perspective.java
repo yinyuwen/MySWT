@@ -8,6 +8,8 @@ public class Perspective implements IPerspectiveFactory {
 
 	public void createInitialLayout(IPageLayout layout) {
 		layout.setEditorAreaVisible(true);
+		// layout.setEditorAreaVisible(false);
+
 		// layout.addStandaloneView(WorkSpaceHeader.ID, false, IPageLayout.TOP,
 		// 0.15f, layout.getEditorArea());
 		IFolderLayout navFold = layout.createFolder("Navigator",
@@ -24,6 +26,9 @@ public class Perspective implements IPerspectiveFactory {
 				layout.getEditorArea());
 		layout3.addView("day8_16_rcpswt.view7");
 		layout3.addView("day8_16_rcpswt.view8");
-		  
+		
+		
+		
+
 	}
 }

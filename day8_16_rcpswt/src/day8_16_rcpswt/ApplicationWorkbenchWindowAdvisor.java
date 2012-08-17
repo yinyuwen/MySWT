@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -38,6 +39,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 				.getActiveWorkbenchWindow().getActivePage();
 		try {
 			page.openEditor(new MyEditorInput(), "day8_16_rcpswt.editor1", true);
+			page.openEditor(new MyEditorInput2(), "day8_16_rcpswt.editor2",true);
 		} catch (PartInitException e) {
 			e.printStackTrace();
 		}

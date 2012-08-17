@@ -4,7 +4,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 
-public class MyEditorInput implements IEditorInput {
+public class MyEditorInput2 implements IEditorInput {
 
 	@Override
 	public Object getAdapter(Class adapter) {
@@ -24,7 +24,7 @@ public class MyEditorInput implements IEditorInput {
 
 	@Override
 	public String getName() {
-		return "Ecc";
+		return "name";
 	}
 
 	@Override
