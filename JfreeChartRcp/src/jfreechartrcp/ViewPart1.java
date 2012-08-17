@@ -1,21 +1,19 @@
-package day8_16_rcpswt;
+package jfreechartrcp;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.swing.JFrame;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.part.ViewPart;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -29,50 +27,58 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
 import org.jfree.experimental.chart.swt.ChartComposite;
 
-public class ViewPart8 extends ViewPart {
+public class ViewPart1 extends ViewPart {
 	private static final String CHART_PATH = "E:/test/";
 
-	public ViewPart8() {
+	public ViewPart1() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) {
-		ViewPart8 part8 = new ViewPart8();
-
-	}
+	// public static void main(String[] args) {
+	// ViewPart1 part1 = new ViewPart1();
+	// double[][] data = new double[][] { { 672, 766, 223, 540, 126 },
+	// { 325, 521, 210, 340, 106 }, { 332, 256, 523, 240, 526 } };
+	// String[] rowKeys = { "苹果", "梨子", "葡萄" };
+	// String[] columnKeys = { "北京", "上海", "广州", "成都", "深圳" };
+	// CategoryDataset dataset = part1.getBarData(data, rowKeys, columnKeys);
+	// final JFreeChart viewChart = part1.createTimeXYChar("折线图", "x轴", "y轴",
+	// dataset, "lineAndShap.png");
+	// ChartPanel panel = new ChartPanel(viewChart);
+	// JFrame frame = new JFrame();
+	// frame.getContentPane().add(panel);
+	// frame.show();
+	//
+	// }
 
 	@Override
 	public void createPartControl(Composite parent) {
-		parent.setLayout(new FillLayout(SWT.HORIZONTAL));
+		parent.setLayout(new FillLayout(SWT.VIRTUAL));
+		Text text = new Text(parent, SWT.NONE);
+		text.setText("sssss");
+
 		double[][] data = new double[][] { { 672, 766, 223, 540, 126 },
 				{ 325, 521, 210, 340, 106 }, { 332, 256, 523, 240, 526 } };
 		String[] rowKeys = { "苹果", "梨子", "葡萄" };
 		String[] columnKeys = { "北京", "上海", "广州", "成都", "深圳" };
-		CategoryDataset dataset = DatasetUtilities.createCategoryDataset(
-				rowKeys, columnKeys, data);
-
-		// getBarData(data, rowKeys, columnKeys);
+		CategoryDataset dataset = getBarData(data, rowKeys, columnKeys);
 		final JFreeChart viewChart = createTimeXYChar("折线图", "x轴", "y轴",
 				dataset, "lineAndShap.png");
 
 		final ChartComposite frame1 = new ChartComposite(parent, SWT.NONE,
 				viewChart, true);
-		FillLayout fillLayout = new FillLayout();
-		fillLayout.type = SWT.VERTICAL;
-		frame1.setLayout(fillLayout);
-		frame1.setSize(600, 300);
 		frame1.setDisplayToolTips(true);
 		frame1.setHorizontalAxisTrace(false);
 		frame1.setVerticalAxisTrace(false);
-
 	}
 
-	// public CategoryDataset getBarData(double[][] data, String[] rowKeys,
-	// String[] columnKeys) {
-	// return DatasetUtilities
-	// .createCategoryDataset(rowKeys, columnKeys, data);
-	//
-	// }
+	public CategoryDataset getBarData(double[][] data, String[] rowKeys,
+			String[] columnKeys) {
+		CategoryDataset ds = DatasetUtilities.createCategoryDataset(rowKeys,
+				columnKeys, data);
+		System.err.println(ds);
+		return ds;
+
+	}
 
 	public JFreeChart createTimeXYChar(String chartTitle, String x, String y,
 			CategoryDataset xyDataset, String charName) {
