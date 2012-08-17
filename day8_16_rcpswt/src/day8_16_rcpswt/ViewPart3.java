@@ -14,6 +14,8 @@ import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.layout.TableColumnLayout;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -37,35 +39,63 @@ public class ViewPart3 extends ViewPart {
 
 		Tree tree = new Tree(parent, SWT.BORDER);
 		tree.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_BLUE));
-
-		tree.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				
-				try {
-					PlatformUI
-							.getWorkbench()
-							.getActiveWorkbenchWindow()
-							.getActivePage()
-							.openEditor(new MyEditorInput(),
-									"day8_16_rcpswt.editor1", true);
-				} catch (PartInitException e1) {
-					e1.printStackTrace();
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
+		 tree.addSelectionListener(new SelectionListener() {
+		
+		 @Override
+		 public void widgetSelected(SelectionEvent e) {
+		 if ("TreeItem {Test}".equals(e.item.toString())) {
+		
+		 try {
+		 PlatformUI
+		 .getWorkbench()
+		 .getActiveWorkbenchWindow()
+		 .getActivePage()
+		 .openEditor(new MyEditorInput(),
+		 "day8_16_rcpswt.editor1", true);
+		 } catch (PartInitException e1) {
+		 e1.printStackTrace();
+		 }
+		 } else if ("name".equals(e.item.toString())) {
+		 try {
+		 PlatformUI
+		 .getWorkbench()
+		 .getActiveWorkbenchWindow()
+		 .getActivePage()
+		 .openEditor(new MyEditorInput2(),
+		 "day8_16_rcpswt.editor2", true);
+		 } catch (PartInitException e1) {
+		 e1.printStackTrace();
+		 }
+		 }
+		 }
+		
+		 @Override
+		 public void widgetDefaultSelected(SelectionEvent e) {
+		
+		 }
+		 });
+		
 		TreeItem trtmRoot = new TreeItem(tree, SWT.NONE);
 		trtmRoot.setText("Root");
 
 		TreeItem trtmNewTreeitem_1 = new TreeItem(trtmRoot, SWT.NONE);
-		trtmNewTreeitem_1.setText("dada");
+		trtmNewTreeitem_1.setText("Test");
+//		trtmNewTreeitem_1.addDisposeListener(new DisposeListener() {
+//
+//			@Override
+//			public void widgetDisposed(DisposeEvent e) {
+//				try {
+//					PlatformUI
+//							.getWorkbench()
+//							.getActiveWorkbenchWindow()
+//							.getActivePage()
+//							.openEditor(new MyEditorInput(),
+//									"day8_16_rcpswt.editor1", true);
+//				} catch (PartInitException e1) {
+//					e1.printStackTrace();
+//				}
+//			}
+//		});
 
 		TreeItem trtmDsa = new TreeItem(trtmNewTreeitem_1, SWT.NONE);
 		trtmDsa.setText("dsa");
